@@ -3,41 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scribble Rabbit</title>
+
+  <!-- ===== PAGE TITLE & SEARCH DESCRIPTION (shows in browser tab and Google) ===== -->
+  <title>Scribble Rabbit | Concept Art &amp; Illustration</title>
+  <meta name="description" content="Concept art and illustration portfolio by Scribble Rabbit.">
+
+  <!-- ===== LINK PREVIEW IMAGE (shown when shared on social media) =====
+       Change art1.jpg to whichever image you want as the preview -->
+  <meta property="og:title" content="Scribble Rabbit | Concept Art &amp; Illustration">
+  <meta property="og:description" content="Concept art and illustration portfolio.">
+  <meta property="og:image" content="https://scribblerabbit.com/art1.jpg">
+
   <style>
+    /* ===== COLORS: change these to restyle the whole site ===== */
+    :root {
+      --bg: #fafaf8;          /* page background */
+      --text: #1c1c1c;        /* main text */
+      --muted: #6b6b6b;       /* softer text */
+      --accent: #e0607e;      /* link / hover color (rabbit pink) */
+      --line: #e6e6e1;        /* thin divider lines */
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
-      display: flex;
-      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ===== HEADER ===== */
+    header {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 72px 24px 40px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: clamp(2rem, 6vw, 3rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    header .tagline {
+      margin-top: 8px;
+      color: var(--accent);
+      font-size: 0.95rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    header .bio {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    /* ===== GALLERY GRID =====
+       Automatically fits as many columns as the screen allows
+       (1 on phones, 2 on tablets, 3+ on desktops). */
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .gallery figure {
+      overflow: hidden;
+      border-radius: 6px;
+      background: #eee;
+      cursor: zoom-in;
+    }
+    .gallery img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      aspect-ratio: 4 / 3;       /* uniform tiles; click an image to see it in full */
+      object-fit: cover;
+      transition: transform 0.4s ease, opacity 0.3s ease;
+    }
+    .gallery figure:hover img { transform: scale(1.04); opacity: 0.92; }
+
+    /* ===== FULL-SCREEN VIEWER (opens when a gallery image is clicked) ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.92);
       align-items: center;
       justify-content: center;
-      min-height: 85vh;
-      margin: 0;
-      text-align: center;
-      padding: 20px;
+      padding: 24px;
+      z-index: 10;
+      cursor: zoom-out;
     }
-    h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
-    p { font-size: 1.1rem; color: #555; max-width: 500px; margin-bottom: 1.5rem; }
+    .lightbox.open { display: flex; }
+    .lightbox img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 4px;
+    }
+
+    /* ===== LINKS / CONTACT SECTION ===== */
+    .links {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 56px 24px 32px;
+      text-align: center;
+      border-top: 1px solid var(--line);
+      margin-top: 48px;
+    }
+    .links h2 {
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .links ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px 28px;
+    }
     .links a {
-      display: inline-block;
-      margin: 0 8px;
-      padding: 10px 18px;
-      background: #111;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: 500;
+      border-bottom: 1px solid var(--text);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .links a:hover { color: var(--accent); border-color: var(--accent); }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 16px 24px 48px;
     }
   </style>
 </head>
+
 <body>
-  <h1>Scribble Rabbit</h1>
-  <p>Illustrator & Visual Artist. New portfolio is coming soon!</p>
-  <div class="links">
-    <a href="https://instagram.com" target="_blank">Instagram</a>
-    <a href="mailto:hello@scribblerabbit.com">Email Me</a>
-  </div>
+
+  <!-- ============================================================
+       HEADER: your brand name and short bio
+       ============================================================ -->
+  <header>
+    <!-- Change the name here -->
+    <h1>Scribble Rabbit</h1>
+
+    <!-- Change the tagline here -->
+    <p class="tagline">Illustrator &amp; Visual Artist</p>
+
+    <!-- Change your bio here (2-3 sentences works best) -->
+    <p class="bio">
+      Hi! I'm Michelle Wirono, a concept and visual development artist who loves to build memorable worlds and characters with intention.
+    </p>
+  </header>
+
+
+  <!-- ============================================================
+       GALLERY
+       TO SWAP AN IMAGE: change the file name inside src="..." to match
+       the file you uploaded to your repository (e.g. src="dragon.jpg").
+       The file name must match EXACTLY, including capital letters.
+       The "alt" text describes the image (helps accessibility and Google).
+
+       TO ADD MORE IMAGES: copy one whole <figure> ... </figure> block
+       and paste it right below the last one.
+       TO REMOVE ONE: delete its whole <figure> ... </figure> block.
+       ============================================================ -->
+  <main class="gallery">
+
+    <figure>
+      <img src="art1.jpg" alt="Describe artwork 1 here" loading="lazy">
+    </figure>
+
+    <figure>
+      <img src="art2.jpg" alt="Describe artwork 2 here" loading="lazy">
+    </figure>
+
+    <figure>
+      <img src="art3.jpg" alt="Describe artwork 3 here" loading="lazy">
+    </figure>
+
+    <figure>
+      <img src="art4.jpg" alt="Describe artwork 4 here" loading="lazy">
+    </figure>
+
+    <figure>
+      <img src="art5.jpg" alt="Describe artwork 5 here" loading="lazy">
+    </figure>
+
+    <figure>
+      <img src="art6.jpg" alt="Describe artwork 6 here" loading="lazy">
+    </figure>
+
+    <!-- Paste more <figure> blocks here -->
+
+  </main>
+
+
+  <!-- Full-screen image viewer (leave as is) -->
+  <div class="lightbox" id="lightbox"><img src="" alt=""></div>
+
+
+  <!-- ============================================================
+       LINKS / CONTACT
+       Replace YOUR_INSTAGRAM_NAME with your Instagram handle (your email is already set).
+       To add another link (ArtStation, Twitter/X, etc.), copy one
+       <li>...</li> line and change the address and the label.
+       ============================================================ -->
+  <section class="links">
+    <h2>Say Hello</h2>
+    <ul>
+      <li><a href="https://instagram.com/YOUR_INSTAGRAM_NAME" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="mailto:hello@scribblerabbit.com">Email</a></li>
+      <!-- Example extra link:
+      <li><a href="https://www.artstation.com/YOUR_NAME" target="_blank" rel="noopener">ArtStation</a></li>
+      -->
+    </ul>
+  </section>
+
+  <footer>
+    <!-- Change the name/copyright line here -->
+    &copy; 2026 Scribble Rabbit. All artwork is copyrighted and may not be used without permission.
+  </footer>
+
+
+  <!-- Tiny script: click an image to view it large, click again to close. Leave as is. -->
+  <script>
+    var box = document.getElementById('lightbox');
+    var boxImg = box.querySelector('img');
+    document.querySelectorAll('.gallery img').forEach(function (img) {
+      img.addEventListener('click', function () {
+        boxImg.src = img.src;
+        boxImg.alt = img.alt;
+        box.classList.add('open');
+      });
+    });
+    box.addEventListener('click', function () { box.classList.remove('open'); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') box.classList.remove('open');
+    });
+  </script>
+
 </body>
 </html>
