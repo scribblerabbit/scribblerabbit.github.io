@@ -360,7 +360,7 @@ main h2 {
 .gallery.reveal-ready figure {
   opacity: 0;
   transform: translateY(10px) scale(0.97);
-  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.2, 0.7, 0.3, 1);
+  transition: opacity 0.25s ease, transform 0.25s cubic-bezier(0.2, 0.7, 0.3, 1);
   will-change: opacity, transform;
 }
 .gallery.reveal-ready figure.is-visible {
@@ -372,13 +372,13 @@ main h2 {
   transform: none;
   transition: none;
 }
-.gallery.reveal-ready figure:nth-child(2) { transition-delay: 0.07s; }
-.gallery.reveal-ready figure:nth-child(3) { transition-delay: 0.14s; }
-.gallery.reveal-ready figure:nth-child(4) { transition-delay: 0.21s; }
-.gallery.reveal-ready figure:nth-child(5) { transition-delay: 0.28s; }
-.gallery.reveal-ready figure:nth-child(6) { transition-delay: 0.35s; }
-.gallery.reveal-ready figure:nth-child(7) { transition-delay: 0.42s; }
-.gallery.reveal-ready figure:nth-child(8) { transition-delay: 0.49s; }
+.gallery.reveal-ready figure:nth-child(2) { transition-delay: 0.04s; }
+.gallery.reveal-ready figure:nth-child(3) { transition-delay: 0.08s; }
+.gallery.reveal-ready figure:nth-child(4) { transition-delay: 0.12s; }
+.gallery.reveal-ready figure:nth-child(5) { transition-delay: 0.16s; }
+.gallery.reveal-ready figure:nth-child(6) { transition-delay: 0.20s; }
+.gallery.reveal-ready figure:nth-child(7) { transition-delay: 0.24s; }
+.gallery.reveal-ready figure:nth-child(8) { transition-delay: 0.28s; }
 .gallery img {
   display: block;
   width: 100%;
